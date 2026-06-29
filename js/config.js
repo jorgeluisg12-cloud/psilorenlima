@@ -59,8 +59,8 @@ const DATA_CONFIG = {
     ebook: {
         tag: "Material gratuito",
         title: "Um presente para você começar hoje.",
-        description: "Criei um guia prático sobre regulação emocional para quem quer entender melhor seus próprios padrões — com linguagem simples e exercícios baseados na TCC.",
-        pdfUrl: "assets/pdf/guia-regulacao-emocional.pdf",
+        description: "Criei um guia prático sobre regulação da ansiedade para quem quer entender melhor seus próprios padrões — com linguagem simples e exercícios baseados na TCC.",
+        pdfUrl: "assets/pdf/Silenciando_o_Caos_por_LorenaLima.pdf",
         ctaText: "Baixar gratuitamente"
     },
 
