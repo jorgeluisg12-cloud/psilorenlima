@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baixar Ebook Gratuito | Dra. Lorena Lima</title>
+    <meta name="description" content="Faça o download imediato do seu Guia Prático de Regulação Emocional fundamentado na TCC.">
+    <meta name="robots" content="noindex, follow">
+
+    <!-- Estilos Compartilhados -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/animations.css">
+
+    <style>
+        .ebook-funnel-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--grid-gap-fluid);
+            position: relative;
+        }
+        .funnel-card {
+            background-color: var(--color-white);
+            padding: clamp(2rem, 5vw, 4.5rem);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-premium);
+            width: 100%;
+            max-width: 620px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+        .transition-text {
+            position: relative;
+            padding-block: 32px;
+            margin-block: 32px;
+        }
+        .transition-text::before, .transition-text::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 1px;
+            background-color: var(--color-areia);
+        }
+        .transition-text::before { top: 0; }
+        .transition-text::after { bottom: 0; }
+    </style>
+</head>
+<body class="bg-blur" style="background-color: var(--color-bege);">
+
+    <div class="ambient-glow" style="top: 20%; left: 30%;" aria-hidden="true"></div>
+
+    <main class="ebook-funnel-container">
+        <div class="funnel-card reveal-scale-up">
+            <span class="section-tag" style="margin-bottom: 24px; display: inline-block;">Download Concluído</span>
+            <h1 class="font-display text-primary margin-bottom-md" style="font-size: var(--fs-title); line-height: 1.2;">
+                Espero que esse material ajude você.
+            </h1>
+            
+            <!-- Botão de Download Real -->
+            <a href="#" id="funnel-download-btn" class="btn btn-primary btn-lg margin-bottom-sm linear-border-trigger" download style="gap: 12px; width: 100%;">
+                <span>📖 Baixar PDF</span>
+            </a>
+
+            <!-- Texto de Transição Estilo Apple/Linear -->
+            <div class="transition-text">
+                <p class="body-base text-muted font-light" style="line-height: 1.6;">
+                    Se durante a leitura você perceber que precisa de ajuda para colocar essas estratégias em prática, estou à disposição para conversar.
+                </p>
+            </div>
+
+            <!-- CTA de Conversão Direta -->
+            <a href="#" id="funnel-whatsapp-btn" class="btn btn-outline btn-lg btn-glow-trigger" style="width: 100%;">
+                Agendar pelo WhatsApp
+            </a>
+        </div>
+    </main>
+
+    <script src="js/config.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const data = DATA_CONFIG;
+            if(!data) return;
+
+            // Configuração dos caminhos dinâmicos
+            const downloadBtn = document.getElementById("funnel-download-btn");
+            const whatsappBtn = document.getElementById("funnel-whatsapp-btn");
+
+            if(downloadBtn) downloadBtn.setAttribute("href", data.ebook.pdfUrl);
+            if(whatsappBtn) whatsappBtn.setAttribute("href", data.profile.whatsappUrl);
+            
+            // Ativação imediata da animação Apple-style
+            setTimeout(() => {
+                document.querySelector('.funnel-card')?.classList.add('active');
+            }, 100);
+        });
+    </script>
+</body>
+</html>
