@@ -1,5 +1,7 @@
 /**
- * MOTOR DE EXECUÇÃO DA INTERFACE (CLIENT-SIDE ENGINE)
+ * MOTOR DE EXECUÇÃO DA INTERFACE
+ * Renderiza conteúdo dinâmico a partir do config.js
+ * Não altere este arquivo para mudar textos — use config.js
  */
 document.addEventListener("DOMContentLoaded", () => {
     try {
@@ -8,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         initializeIntersectionObserver();
     } catch (error) {
-        console.error("Erro controlado no motor de renderização:", error);
+        console.error("Erro no motor de renderização:", error);
     }
 });
 
@@ -16,7 +18,7 @@ function renderLandingPage() {
     const data = DATA_CONFIG;
     if (!data) return;
 
-    // Sincronização Global de Links de Conversão (CTAs)
+    // ── CTAs globais de WhatsApp ──────────────────────
     const whatsappHooks = [
         document.getElementById("nav-cta"),
         document.getElementById("hero-primary-cta"),
@@ -27,24 +29,29 @@ function renderLandingPage() {
         if (hook) hook.setAttribute("href", data.profile.whatsappUrl);
     });
 
-    // Elementos Nominativos de Marca
-    const logoNodes = [document.getElementById("header-logo"), document.getElementById("footer-logo")];
-    logoNodes.forEach(node => { if (node) node.textContent = data.profile.name; });
-    
+    // ── Logos ─────────────────────────────────────────
+    [document.getElementById("header-logo"), document.getElementById("footer-logo")]
+        .forEach(node => { if (node) node.textContent = data.profile.name; });
+
     const crpFull = document.getElementById("footer-crp-full");
-    if (crpFull) crpFull.textContent = `Dra. ${data.profile.name} — Psicóloga Clínica — CRP ${data.profile.crp}`;
+    if (crpFull) crpFull.textContent = `${data.profile.name} — ${data.profile.title} — CRP ${data.profile.crp}`;
 
-    // Renderização da Seção Hero
-    document.getElementById("hero-badge").textContent = data.hero.badge;
-    document.getElementById("hero-title").innerHTML = data.hero.title;
-    document.getElementById("hero-subtitle").textContent = data.hero.subtitle;
-    document.getElementById("hero-primary-cta").textContent = data.hero.ctaText;
+    // ── Hero ──────────────────────────────────────────
+    setText("hero-badge",    data.hero.badge);
+    setHTML("hero-title",    data.hero.title);
+    setText("hero-subtitle", data.hero.subtitle);
+    setText("hero-primary-cta",   data.hero.ctaPrimary   || data.hero.ctaText || "Agendar consulta");
+    setText("hero-secondary-cta", data.hero.ctaSecondary || "Saiba como posso ajudar");
 
-    // Renderização da Seção Sobre
-    document.getElementById("about-tag").textContent = data.about.tag;
-    document.getElementById("about-title").textContent = data.about.title;
-    const crpBoxInner = document.getElementById("about-crp")?.querySelector("span");
-    if (crpBoxInner) crpBoxInner.textContent = `CRP Ativo: ${data.profile.crp}`;
+    // ── Sobre ─────────────────────────────────────────
+    setText("about-tag",   data.about.tag);
+    setText("about-title", data.about.title);
+
+    const crpBadge = document.getElementById("about-crp");
+    if (crpBadge) {
+        const span = crpBadge.querySelector("span") || crpBadge;
+        span.textContent = `CRP ${data.profile.crp} · Ativo`;
+    }
 
     const textContainer = document.getElementById("about-text-container");
     if (textContainer) {
@@ -52,17 +59,18 @@ function renderLandingPage() {
         const fragment = document.createDocumentFragment();
         data.about.paragraphs.forEach(text => {
             const p = document.createElement("p");
-            p.className = "body-base text-muted margin-bottom-sm font-light";
+            p.className = "body-base";
+            p.style.marginBottom = "1rem";
             p.textContent = text;
             fragment.appendChild(p);
         });
         textContainer.appendChild(fragment);
     }
 
-    // Renderização de Especialidades
-    document.getElementById("areas-tag").textContent = data.specialtiesSection.tag;
-    document.getElementById("areas-title").textContent = data.specialtiesSection.title;
-    document.getElementById("areas-subtitle").textContent = data.specialtiesSection.subtitle;
+    // ── Especialidades ────────────────────────────────
+    setText("areas-tag",      data.specialtiesSection.tag);
+    setText("areas-title",    data.specialtiesSection.title);
+    setText("areas-subtitle", data.specialtiesSection.subtitle);
 
     const gridContainer = document.getElementById("areas-grid");
     if (gridContainer) {
@@ -73,46 +81,64 @@ function renderLandingPage() {
             card.className = "card-atuacao reveal-fade-in";
             card.innerHTML = `
                 <span class="card-icon" aria-hidden="true">${item.icon}</span>
-                <h3 class="font-display text-primary margin-bottom-sm" style="font-size: var(--fs-subtitle);">${item.title}</h3>
-                <p class="body-sm text-muted font-light" style="line-height: 1.6;">${item.description}</p>
+                <h3>${item.title}</h3>
+                <p>${item.description}</p>
             `;
             fragment.appendChild(card);
         });
         gridContainer.appendChild(fragment);
     }
 
-    // Renderização do Ebook
-    document.getElementById("ebook-tag").textContent = data.ebook.tag;
-    document.getElementById("ebook-title").textContent = data.ebook.title;
-    document.getElementById("ebook-description").textContent = data.ebook.description;
-    const ebookLink = document.getElementById("ebook-funnel-cta");
-    if (ebookLink) ebookLink.textContent = data.ebook.ctaText;
+    // ── Ebook ─────────────────────────────────────────
+    setText("ebook-tag",         data.ebook.tag);
+    setText("ebook-title",       data.ebook.title);
+    setText("ebook-description", data.ebook.description);
+    const ebookCta = document.getElementById("ebook-funnel-cta");
+    if (ebookCta) ebookCta.textContent = data.ebook.ctaText;
 
-    // Renderização do Processo Clinico
-    document.getElementById("process-tag").textContent = data.processSection.tag;
-    document.getElementById("process-title").textContent = data.processSection.title;
-    document.getElementById("process-subtitle").textContent = data.processSection.subtitle;
+    // ── Processo ──────────────────────────────────────
+    setText("process-tag",      data.processSection.tag);
+    setText("process-title",    data.processSection.title);
+    setText("process-subtitle", data.processSection.subtitle);
 
     const timeline = document.getElementById("process-timeline");
     if (timeline) {
         timeline.innerHTML = "";
         const fragment = document.createDocumentFragment();
         data.processSection.steps.forEach(step => {
-            const stepItem = document.createElement("div");
-            stepItem.className = "timeline-item reveal-fade-in";
-            stepItem.innerHTML = `
+            const item = document.createElement("div");
+            item.className = "timeline-item reveal-fade-in";
+            item.innerHTML = `
                 <div class="timeline-marker" aria-hidden="true"></div>
-                <h3 class="font-display text-primary margin-bottom-sm" style="font-size: 1.25rem;">${step.title}</h3>
-                <p class="body-base text-muted font-light">${step.desc}</p>
+                <h3>${step.title}</h3>
+                <p>${step.desc}</p>
             `;
-            fragment.appendChild(stepItem);
+            fragment.appendChild(item);
         });
         timeline.appendChild(fragment);
     }
+
+    // ── CTA Final ─────────────────────────────────────
+    if (data.finalCta) {
+        setText("final-cta-title",    data.finalCta.title);
+        setText("final-cta-subtitle", data.finalCta.subtitle);
+    }
 }
 
+// ── Helpers ───────────────────────────────────────────
+function setText(id, value) {
+    const el = document.getElementById(id);
+    if (el && value) el.textContent = value;
+}
+function setHTML(id, value) {
+    const el = document.getElementById(id);
+    if (el && value) el.innerHTML = value;
+}
+
+// ── Intersection Observer — revelação por scroll ──────
 function initializeIntersectionObserver() {
     const elements = document.querySelectorAll(".reveal-fade-in, .reveal-scale-up");
+
     if (!('IntersectionObserver' in window)) {
         elements.forEach(el => el.classList.add("active"));
         return;
@@ -128,7 +154,7 @@ function initializeIntersectionObserver() {
     }, {
         root: null,
         threshold: 0.05,
-        rootMargin: "0px 0px -30px 0px"
+        rootMargin: "0px 0px -40px 0px"
     });
 
     elements.forEach(el => observer.observe(el));

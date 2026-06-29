@@ -1,29 +1,58 @@
-/* ADAPTABILIDADE E CRO RESPONSIVO MOBILE */
+/* ═══════════════════════════════════════════════════════════
+   RESPONSIVIDADE — mobile-first, tráfego do Instagram
+═══════════════════════════════════════════════════════════ */
 
 @media (max-width: 1024px) {
-    .grid-3-col { grid-template-columns: repeat(2, 1fr); }
-    .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+    .grid-3 { grid-template-columns: repeat(2, 1fr); }
+    .footer-grid { grid-template-columns: 1fr; gap: 2.5rem; }
 }
 
 @media (max-width: 768px) {
-    .grid-2-col, .grid-3-col { grid-template-columns: 1fr; }
-    
-    .hero { padding-top: 130px; }
-    .hero-visual { order: -1; max-width: 75%; margin-inline: auto; }
-    
-    /* UX/CRO Móbile: Simplificação para foco extremo no CTA */
+    /* Grids viram coluna única */
+    .grid-2,
+    .grid-3,
+    .hero-grid,
+    .quem-sou-grid,
+    .ebook-grid { grid-template-columns: 1fr; }
+
+    /* Hero mobile — foto primeiro, conteúdo depois */
+    .hero { padding-top: calc(72px + 3rem); padding-bottom: 3.5rem; }
+    .hero-visual { order: -1; }
+    .hero-visual .img-frame { max-width: 80%; margin-inline: auto; }
+    .hero-visual::before { display: none; }
+    .hero-content { max-width: 100%; text-align: center; }
+    .hero-lead { max-width: 100%; }
+    .hero-actions { justify-content: center; flex-direction: column; align-items: stretch; }
+    .hero-actions .btn { width: 100%; text-align: center; justify-content: center; }
+
+    /* Nav some no mobile — foco no CTA */
     .nav { display: none; }
-    .header-container { height: 70px; }
-    
-    .hero-actions { flex-direction: column; align-items: stretch; gap: 12px; }
-    .btn { width: 100%; text-align: center; }
-    
-    .card-atuacao { padding: 32px; }
-    
-    .whatsapp-fab {
-        bottom: 20px;
-        right: 20px;
-        width: 54px;
-        height: 54px;
-    }
+    .header-inner { height: 64px; }
+
+    /* Pain grid — coluna única */
+    .pain-grid { grid-template-columns: 1fr; }
+
+    /* Sobre — foto ocupa 80% centralizado */
+    .quem-sou-visual .img-frame-round { max-width: 75%; margin-inline: auto; }
+    .quem-sou-content { text-align: center; }
+    .crp-badge { margin-top: 1rem; }
+
+    /* Ebook mockup centralizado */
+    .ebook-mockup { margin-inline: auto; max-width: 260px; }
+    .ebook-content { text-align: center; }
+
+    /* Timeline — ajuste de padding */
+    .timeline { padding-left: 2rem; }
+    .timeline-marker { left: -2.29rem; }
+
+    /* Footer */
+    .footer-grid { grid-template-columns: 1fr; }
+
+    /* FAB menor */
+    .whatsapp-fab { width: 52px; height: 52px; bottom: 20px; right: 20px; }
+}
+
+@media (max-width: 480px) {
+    .pain-card { padding: 1.5rem; }
+    .card-atuacao { padding: 2rem; }
 }

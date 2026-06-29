@@ -1,41 +1,45 @@
 :root {
-    /* Cores de Marca Semânticas (Foco em Contraste Otimizado WCAG AA) */
-    --color-salvia: #5D725E; /* Escurecido para otimizar legibilidade estrutural */      
-    --color-suave: #9BB3A2;        
-    --color-bege: #F5EFE9;         
-    --color-areia: #E6D5C7;        
-    --color-azul-cinza: #B2C0C9;   
-    
-    --color-white: #FFFFFF;        
-    --color-text-primary: #191E1A; 
-    --color-text-muted: #455247;   
-    --color-light-muted: #EBF2ED;  
+    /* ── Paleta Fiel ao Manual de Identidade Visual ── */
+    --color-salvia:       #6E846F;   /* Verde sálvia — destaque, CTAs, links */
+    --color-suave:        #A8BFAE;   /* Verde suave — ícones, separadores    */
+    --color-bege:         #F2EDE6;   /* Bege claro — fundo principal          */
+    --color-areia:        #E8D9CC;   /* Areia suave — seções alternadas       */
+    --color-azul-cinza:   #B7C3CB;   /* Azul cinza — rodapé, detalhes calmos */
 
-    /* Tipografia Escalar Fluida via Funções Matemáticas */
+    --color-white:        #FFFFFF;
+    --color-text-dark:    #2E2E2E;   /* Texto principal — nunca preto puro   */
+    --color-text-muted:   #6B7068;   /* Texto secundário — caloroso           */
+    --color-text-light:   #9AA396;   /* Legendas, captions                    */
+
+    /* ── Tipografia ── */
     --font-display: 'Cormorant Garamond', serif;
-    --font-body: 'Lato', sans-serif;
+    --font-body:    'Lato', sans-serif;
 
-    --fs-display: clamp(2.6rem, 5.5vw + 1rem, 4.5rem);
-    --fs-title: clamp(1.9rem, 3.2vw + 1rem, 3rem);
-    --fs-subtitle: clamp(1.2rem, 1.6vw + 0.5rem, 1.7rem);
-    --fs-body: clamp(1rem, 0.4vw + 0.8rem, 1.15rem);
-    --fs-sm: 0.95rem;
-    --fs-xs: 0.78rem;
+    /* Escala fluida — elegante, nunca agressiva */
+    --fs-hero:     clamp(2.8rem, 5vw + 1rem, 4.8rem);
+    --fs-title:    clamp(2rem, 3vw + 0.8rem, 3rem);
+    --fs-subtitle: clamp(1.15rem, 1.4vw + 0.6rem, 1.45rem);
+    --fs-body:     clamp(1rem, 0.3vw + 0.9rem, 1.1rem);
+    --fs-sm:       0.9rem;
+    --fs-xs:       0.78rem;
 
-    /* Arredondamento Geométrico */
-    --radius-pill: 9999px;         
-    --radius-md: 28px;             
-    --radius-sm: 16px;             
+    /* ── Formas ── */
+    --radius-pill:    9999px;
+    --radius-soft:    32px;
+    --radius-card:    20px;
+    --radius-img-top: 200px 200px 24px 24px;  /* moldura orgânica de foto */
 
-    /* Sombras Stripe/Linear Ambientais */
-    --shadow-soft: 0 8px 30px rgba(93, 114, 94, 0.04);
-    --shadow-premium: 0 20px 50px rgba(93, 114, 94, 0.12);
+    /* ── Sombras — muito sutis, quase imperceptíveis ── */
+    --shadow-card:    0 4px 24px rgba(110, 132, 111, 0.07);
+    --shadow-hover:   0 12px 40px rgba(110, 132, 111, 0.13);
+    --shadow-btn:     0 4px 20px rgba(110, 132, 111, 0.25);
 
-    /* Curvas de Animação Apple Native (iOS 16+ Curve) */
-    --timing-apple: cubic-bezier(0.15, 1, 0.3, 1);
-    --transition-premium: all 0.7s var(--timing-apple);
-    --transition-fast: all 0.2s cubic-bezier(0.2, 0, 0, 1);
+    /* ── Transições — calmas, orgânicas ── */
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+    --transition: all 0.55s var(--ease-out);
+    --transition-fast: all 0.25s ease;
 
-    --grid-gap-fluid: clamp(1.8rem, 3.5vw, 3.5rem);
-    --section-padding-fluid: clamp(5.5rem, 9vw, 11rem);
+    /* ── Espaçamento ── */
+    --section-py:     clamp(5rem, 8vw, 9rem);
+    --gap-fluid:      clamp(2rem, 3.5vw, 3.5rem);
 }
