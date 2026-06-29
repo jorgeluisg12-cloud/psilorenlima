@@ -8,7 +8,7 @@ const DATA_CONFIG = {
         title: "Psicóloga Clínica",
         specialty: "Terapia Cognitivo-Comportamental",
         crp: "10/12638",
-        whatsappUrl: "https://wa.me/5599999999999?text=Olá%2C+Lorena!+Vim+pelo+seu+site+e+gostaria+de+saber+mais+sobre+o+atendimento.",
+        whatsappUrl: "https://wa.me/5594981114804?text=Olá%2C+Lorena!+Vim+pelo+seu+site+e+gostaria+de+saber+mais+sobre+o+atendimento.",
         seo: {
             title: "Lorena Lima | Psicóloga Clínica Especialista em TCC",
             description: "Atendimento em Terapia Cognitivo-Comportamental para ansiedade, depressão e esgotamento. Marabá - PA.",
