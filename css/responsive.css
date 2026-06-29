@@ -1,0 +1,29 @@
+/* ADAPTABILIDADE E CRO RESPONSIVO MOBILE */
+
+@media (max-width: 1024px) {
+    .grid-3-col { grid-template-columns: repeat(2, 1fr); }
+    .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+}
+
+@media (max-width: 768px) {
+    .grid-2-col, .grid-3-col { grid-template-columns: 1fr; }
+    
+    .hero { padding-top: 130px; }
+    .hero-visual { order: -1; max-width: 75%; margin-inline: auto; }
+    
+    /* UX/CRO Móbile: Simplificação para foco extremo no CTA */
+    .nav { display: none; }
+    .header-container { height: 70px; }
+    
+    .hero-actions { flex-direction: column; align-items: stretch; gap: 12px; }
+    .btn { width: 100%; text-align: center; }
+    
+    .card-atuacao { padding: 32px; }
+    
+    .whatsapp-fab {
+        bottom: 20px;
+        right: 20px;
+        width: 54px;
+        height: 54px;
+    }
+}
