@@ -7,7 +7,7 @@ const DATA_CONFIG = {
         name: "Lorena Lima",
         title: "Psicóloga Clínica",
         specialty: "Terapia Cognitivo-Comportamental",
-        crp: "11/24850",
+        crp: "10/12638",
         whatsappUrl: "https://wa.me/5599999999999?text=Olá%2C+Lorena!+Vim+pelo+seu+site+e+gostaria+de+saber+mais+sobre+o+atendimento.",
         seo: {
             title: "Lorena Lima | Psicóloga Clínica Especialista em TCC",
