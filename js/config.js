@@ -17,7 +17,7 @@ const DATA_CONFIG = {
     },
 
     hero: {
-        badge: "Psicóloga Clínica · Marabá - PA",
+        badge: "Psicóloga Clínica · Marabá - PA e Região",
         title: "Você pode aprender a lidar com a sua mente de um jeito diferente.",
         subtitle: "Com a Terapia Cognitivo-Comportamental, entendemos juntos o que está acontecendo dentro de você — e construímos caminhos reais para viver com mais leveza.",
         ctaPrimary: "Quero agendar minha consulta",
